@@ -73,7 +73,10 @@ class Router
     private function runMiddleware(array $middlewares): bool
     {
         foreach ($middlewares as $middleware) {
-            $fqcn = "\\Core\\" . ucfirst($middleware) . 'Middleware';
+            //MOD【自己修正箇所】start
+            // $fqcn = "\\Core\\" . ucfirst($middleware) . 'Middleware';
+            $fqcn = ucfirst($middleware) . 'Middleware';
+            //MOD【自己修正箇所】end
             if (class_exists($fqcn)) {
                 if (!(new $fqcn())->handle()) {
                     return false;
