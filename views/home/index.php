@@ -75,7 +75,19 @@
         <table class="admin-table">
             <thead>
                 <tr>
-                    <?php //MOD【自己修正箇所】start 
+                    <?php //MOD【自己修正箇所】"<?="を"<?php echo"に変更 start 
+                    ?>
+                    <?php
+                    /*
+                    <th> <?= trans('user', 'ユーザー') ?></th>
+                    <th><?= trans('category', 'カテゴリ') ?></th>
+                    <th><?= trans('type', 'タイプ') ?></th>
+                    <th><?= trans('goal', '目標') ?></th>
+                    <th><?= trans('deadline', '期限') ?></th>
+                    <th><?= trans('notification_time', '通知時間') ?></th>
+                    <th><?= trans('set_status', 'SET 状態') ?></th>
+                    <th><?= trans('registered_at', '登録日時') ?></th> -->
+                    */
                     ?>
                     <th><?php echo trans('user', 'ユーザー') ?></th>
                     <th><?php echo trans('category', 'カテゴリ') ?></th>
@@ -85,36 +97,32 @@
                     <th><?php echo trans('notification_time', '通知時間') ?></th>
                     <th><?php echo trans('set_status', 'SET 状態') ?></th>
                     <th><?php echo trans('registered_at', '登録日時') ?></th>
-                    <!-- <th><? //= trans('user', 'ユーザー') 
-                                ?></th>
-                    <th><? //= trans('category', 'カテゴリ') 
-                        ?></th>
-                    <th><? //= trans('type', 'タイプ') 
-                        ?></th>
-                    <th><? //= trans('goal', '目標') 
-                        ?></th>
-                    <th><? //= trans('deadline', '期限') 
-                        ?></th>
-                    <th><? //= trans('notification_time', '通知時間') 
-                        ?></th>
-                    <th><? //= trans('set_status', 'SET 状態') 
-                        ?></th>
-                    <th><? //= trans('registered_at', '登録日時') 
-                        ?></th> -->
-                    <?php //MOD【自己修正箇所】end 
+                    <?php //MOD【自己修正箇所】"<?="を"<?php echo"に変更 end
                     ?>
                 </tr>
             </thead>
             <tbody>
-                <?php //MOD【自己修正箇所】start 
+                <?php //MOD【自己修正箇所】変数名の修正 start
+                ?>
+                <?php // foreach ($records as $r): 
                 ?>
                 <?php foreach ($records as $record): ?>
-                    <?php // foreach ($records as $r): 
-                    ?>
-                    <?php //MDD【自己修正箇所】end 
+                    <?php //MDD【自己修正箇所】変数名の修正 end
                     ?>
                     <tr>
-                        <?php // MDD【自己修正箇所】start 
+                        <?php // MDD【自己修正箇所】変数名の修正 | "<?="を"<?php echo"に変更 start
+                        ?>
+                        <?php
+                        /* 
+                        <td><?=  h($r['user_name']) ?></td>
+                        <td><?= h($r['category_name']) ?></td>
+                        <td><?=  $r['type'] === '0' ? '継続型' : '目標型' ?></td>
+                        <td><?=  h($r['goal_value'] ?? '-') ?></td>
+                        <td><?=  h($r['deadline']    ?? '-') ?></td>
+                        <td><?=  h($r['notification_time'] ?? '-') ?></td>
+                        <td><?= $r['set_status'] == 0 ? '未設定' : '設定済み' ?></td>
+                        <td><?= h($r['registered_at']) ?></td>
+                        */
                         ?>
                         <td><?php echo h($record['user_name']) ?></td>
                         <td><?php echo h($record['category_name']) ?></td>
@@ -122,36 +130,10 @@
                         <td><?php echo h($record['goal_value'] ?? '-') ?></td>
                         <td><?php echo h($record['deadline']    ?? '-') ?></td>
                         <td><?php echo h($record['notification_time'] ?? '-') ?></td>
-                        <?php // MOD【自己修正箇所】end 
-                        ?>
-                        <!-- <td><? //=  h($r['user_name']) 
-                                    ?></td>
-                        <td><? //= h($r['category_name']) 
-                            ?></td>
-                        <td><? //=  $r['type'] === '0' ? '継続型' : '目標型' 
-                            ?></td>
-                        <td><? //=  h($r['goal_value'] ?? '-') 
-                            ?></td>
-                        <td><? //=  h($r['deadline']    ?? '-') 
-                            ?></td>
-                        <td><? //=  h($r['notification_time'] ?? '-') 
-                            ?></td> -->
-
                         <!-- SET 状態：0→未設定、1-3→設定済み -->
-                        <?php //MOD【自己修正箇所】start 
-                        ?>
                         <td><?php echo $record['set_status'] == 0 ? '未設定' : '設定済み' ?></td>
-                        <!-- <td><? //= $r['set_status'] == 0 ? '未設定' : '設定済み' 
-                                    ?></td> -->
-                        <?php //MOD【自己修正箇所】end 
-                        ?>
-
-                        <?php //ADD【自己修正箇所】start 
-                        ?>
                         <td><?php echo h($record['registered_at']) ?></td>
-                        <!-- <td><? //= h($r['registered_at']) 
-                                    ?></td> -->
-                        <?php //ADD【自己修正箇所】end;
+                        <?php // MDD【自己修正箇所】変数名の修正 | "<?="を"<?php echo"に変更 end
                         ?>
                     </tr>
                 <?php endforeach; ?>

@@ -28,14 +28,14 @@ class HomeController extends Controller
                 'reg_from',
                 'reg_to'
             ];
-            //MOD【自己修正箇所】start
+            //MOD【自己修正箇所】変数名の修正 start
             // foreach ($keys as $k) {
             foreach ($keys as $key) {
                 // if (isset($_GET[$k]) && $_GET[$k] !== '') {
                 if (isset($_GET[$key]) && $_GET[$key] !== '') {
                     // $filters[$k] = trim($_GET[$k]);
                     $filters[$key] = trim($_GET[$key]);
-                    //MOD【自己修正箇所】end
+                    //MOD【自己修正箇所】変数名の修正 end
                 }
             }
             $records = UserCategoryChallenge::fetchAll($filters);
