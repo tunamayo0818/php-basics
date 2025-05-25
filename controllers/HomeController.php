@@ -11,11 +11,34 @@ class HomeController extends Controller
     {
         // 翻訳読み込み
         $translations = $this->loadTranslations();
-
+        $records      = [];
+        $filters      = [];
         $user = (new User())->find($_SESSION['user_id']);
-        $records = [];
         if ($user && (int)$user['role'] === 0) {
-            $records = UserCategoryChallenge::fetchAllWithRelations();
+            $keys = [
+                'user',
+                'category',
+                'type',
+                'goal',
+                'deadline_from',
+                'deadline_to',
+                'notify_from',
+                'notify_to',
+                'status',
+                'reg_from',
+                'reg_to'
+            ];
+            //MOD【自己修正箇所】start
+            // foreach ($keys as $k) {
+            foreach ($keys as $key) {
+                // if (isset($_GET[$k]) && $_GET[$k] !== '') {
+                if (isset($_GET[$key]) && $_GET[$key] !== '') {
+                    // $filters[$k] = trim($_GET[$k]);
+                    $filters[$key] = trim($_GET[$key]);
+                    //MOD【自己修正箇所】end
+                }
+            }
+            $records = UserCategoryChallenge::fetchAll($filters);
         }
 
         $this->view('home/index', [
@@ -23,6 +46,7 @@ class HomeController extends Controller
             'translations' => $translations,
             'csrfToken'    => $this->csrfToken(),
             'records'      => $records,
+            'filters'      => $filters,
         ]);
     }
 }
