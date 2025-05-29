@@ -139,5 +139,30 @@
                 <?php endforeach; ?>
             </tbody>
         </table>
+        <!-- ページネーションリンク -->
+        <?php //MOD【自己修正箇所】paginationロジックをcontrollerに記述 start 
+        ?>
+        <?php
+        /*
+        <div class="pagination">
+            <?php if ($currentPage > 1): ?>
+                <a href="?page=<?= $currentPage - 1 ?>">前へ</a>
+            <?php endif; ?>
+
+            <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+                <a href="?page=<?= $i ?>" <?= $i === (int)$currentPage ? 'class="active"' : '' ?>><?= $i ?></a>
+            <?php endfor; ?>
+
+            <?php if ($currentPage < $totalPages): ?>
+                <a href="?page=<?= $currentPage + 1 ?>">次へ</a>
+            <?php endif; ?>
+        </div>
+        */
+        ?>
+        <div class="pagination">
+            <?php echo $paginationLinks ?>
+        </div>
+        <?php //MOD【自己修正箇所】paginationロジックをcontrollerに記述 end
+        ?>
     <?php endif; ?>
 </div>
